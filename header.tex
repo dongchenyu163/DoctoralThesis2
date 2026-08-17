@@ -1,0 +1,155 @@
+%==================================================================== 
+% This file is style for thesis.
+% Modified by  maeda@taka.is.uec.ac.jp ' 2012/01/13
+%==================================================================== 
+%-------------------------------------------------------------------- 
+%\documentclass[12pt,epsbox,subfigure]{jbook}
+\documentclass[12pt,epsbox,epsf,eclepsf,subfigure,oneside,dvipdfmx]{jbook}
+%
+% Style of page
+%
+% header and footer
+% \pagestyle{headings}
+% \pagenumbering{arabic}
+
+\pagestyle{plain}
+\usepackage[centrefoot]{pageno}
+
+\markright{}
+%
+% A4 paper:  W=211mm, H=297mm.
+\setlength{\textheight}{230mm}
+\setlength{\topmargin}{-10mm}
+%\setlength{\headheight}{10mm}
+\setlength{\headsep}{15mm}
+%\setlength{\footheight}{0mm}
+\setlength{\footskip}{10mm}
+\setlength{\textwidth}{165mm}
+\setlength{\oddsidemargin}{0mm}
+\setlength{\evensidemargin}{0mm}
+\setlength{\parindent}{10pt}
+\setlength{\parskip}{0.75pt}
+\setlength{\unitlength}{1.5mm}
+\setlength{\unitlength}{1mm}
+%-------------------------------------------------------------------- 
+%-------------------------------------------------------------------- 
+\renewcommand{\textfraction}{0.2}
+\renewcommand{\topfraction}{0.8}
+\renewcommand{\bottomfraction}{0.8}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}[section]
+
+% for mathematical symbols.
+\newcommand{\dgr}{^\circ}
+\newcommand{\atan}{\mbox{atan}}
+\newcommand{\atant}{\mbox{atan2}}
+\newcommand{\mbold}[1]{\mbox{\boldmath$#1$}}
+\newcommand{\hatbold}[1]{\hat{\mbox{\boldmath$#1$}}}
+
+% for minipage environment.
+\newlength{\minitwocolumn}
+\setlength{\minitwocolumn}{0.5\textwidth}
+\addtolength{\minitwocolumn}{-0.5\columnsep}
+
+% shee definition.
+\def\A4sheet{\width=210mm \height=297mm}
+\def\A5sheet{\width=148mm \height=210mm}
+\def\B4sheet{\width=257mm \height=363mm}
+\def\B5sheet{\width=182mm \height=257mm}
+\def\bibname{参考文献}  %article�Atarticle�N���X
+%-------------------------------------------------------------------- 
+\renewcommand{\baselinestretch}{1.5}
+% \usepackage[draft]{graphicx}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{mathrsfs} 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+%\usepackage{slashbox}
+%\usepackage{mathpazo}
+%\usepackage{txfonts}
+
+% algorithm
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{tabularx} % For tables with auto-wrapping columns
+% Add because main language is not English
+\usepackage{enumitem}
+\setlist[itemize]{label=-}
+
+\usepackage{bm}
+\usepackage{cite}
+\usepackage{url}
+
+%\bibliographystyle{jplain}
+% \usepackage{fancyhdr}
+
+%%%%%%%%%%%%%%%%%%%%
+\usepackage{url} 
+\usepackage{boites} 
+\usepackage{colortbl}
+\usepackage{multirow}
+\usepackage{listings,jlisting}
+
+
+% %%%%Table
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{makecell}
+
+
+\definecolor{orange}{rgb}{1.0, 0.65, 0.0}
+
+\newcommand{\orange}[1]{\multicolumn{1}{>{\columncolor{orange}}c|}{#1}}
+%%%%%%%%%%%%%%%%%%%%
+
+% \usepackage{subfigure}
+\newcommand{\csubfloat}[2][]{%
+  \makebox[0pt]{\subfloat[#1]{#2}}%
+}
+\newcommand{\centerhfill}[1][\quad]{\hspace{\stretch{0.5}}#1\hspace{\stretch{0.5}}}
+
+% for Table
+\usepackage{booktabs}
+
+\def\MARU#1{{\ooalign{\hfil#1\/\hfil\crcr\raise.167ex\hbox{\mathhexbox20D}}}} 
+\renewcommand{\labelitemi}{�E}
+% \newcommand\subcaption[1]{\begin{center}#1\end{center}}
+
+\newcommand{\namefingerpoint}{指先位置}
+\newcommand{\namefingerforce}{指先力}
+\newcommand{\nameholdingpointset}{把持位置}
+\newcommand{\namesearchspace}{探索空間}
+\newcommand{\namegraspforce}{把持力} % 指先力の集まり
+\newcommand{\namefingerpointENG}{finger position}
+\newcommand{\namefingerforceENG}{finger force}
+\newcommand{\nameholdingpointsetENG}{holding point set}
+\newcommand{\namesearchspaceENG}{search space}
+\newcommand{\namegraspforceENG}{holding force}
+
+\newcommand{\namegraspforcetitleENG}{HoldingForce}
+\newcommand{\namefingerpointcapENG}{Finger position}
+\newcommand{\namefingerforcecapENG}{Finger force}
+\newcommand{\nameholdingpointsetcapENG}{Holding point set}
+\newcommand{\namesearchspacecapENG}{Search space}
+\newcommand{\namegraspforcecapENG}{Holding force} % TODO: 重大问题，原文中有2种解释．．．6*1的合力 以及 3n*1指力列向量;
+
+\usepackage{xparse}
+\NewDocumentCommand{\equfingerpoint}{ O{} O{} }{\bm{p}_{\mathrm{#1}#2}}
+\NewDocumentCommand{\equholdingpointset}{ O{} O{} }{{P}_{\mathrm{#1}#2}}  % 把持位置
+\newcommand{\equsearchspace}{\mathbb{P}}
+\NewDocumentCommand{\equfingerforce}{ O{} }{\bm{f}_{\mathrm{f}#1}}
+\NewDocumentCommand{\equgraspforcevector}{ O{} }{\bm{f}_{\mathrm{#1}}}
+\newcommand{\equgraspforce}{\bm{f}}
+\newcommand{\equgraspforcelist}{\mathbb{F}}
+
+\NewDocumentCommand{\fix}{ O{} }{\textcolor{black}{#1}}
+\NewDocumentCommand{\todofix}{ O{} }{\textcolor{black}{#1}}
+
+
+
+

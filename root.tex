@@ -1,0 +1,62 @@
+%==================================================================== 
+\input{header.tex}
+\usepackage{subcaption}
+% \setcounter{tocdepth}{4}  % TODO:记得定稿的时候删除这句话．
+%==================================================================== 
+
+
+\begin{document}
+	%-------------------------------------------------------------------- 
+	\begin{titlepage}
+		\begin{center}
+			{\large 令和８年度博士論文} \\
+			\vspace{2cm}
+			{\LARGE \bf 3Dモデルベースの料理マニピュレーションに関する研究} \\
+			% {\LARGE \bf 液体の定量的な注ぎ作業の実現  } \\
+			
+			\vspace{2cm}
+			{\large 大学院情報理工学研究科 } \\
+			{\large 情報学専攻} \\
+			\vspace{3cm}
+			\begin{tabular}{lcl}
+				{\large 学 籍 番 号} &{\large :}	& {\large 1940006} \\ 
+				{\large 氏 \hspace{11mm} 名}	&{\large :}& {\large DONG CHENYU} \\ 
+				{\large 主任指導教員}			&{\large :}& {\large 工藤 俊亮 教授} \\ 
+				{\large 指 導 教 員}			&{\large :}& {\large 広田 光一 教授} \\ 
+				{\large 指 導 教 員}			&{\large :}& {\large 木村 航平 助教} \\ 
+				{\large 提出年月日}			&{\large :}& {\large 令和8年7月10日(金)}
+			\end{tabular}
+		\end{center}
+	\end{titlepage}
+	%-------------------------------------------------------------------- 
+	
+	\normalsize
+	
+	% \pagestyle{fancy}
+	% \lhead{}
+	% \rhead{\thepage}
+	% \cfoot{}
+	% \renewcommand{\headrulewidth}{0pt}
+	
+	%-------------------------------------------------------------------- 
+	\tableofcontents
+	%-------------------------------------------------------------------- 
+	\listoffigures
+	%-------------------------------------------------------------------- 
+	\listoftables
+	
+	\include{Chapter1}
+	\include{Chapter2}
+	\include{Chapter3}
+	\include{Chapter4}
+	\include{Chapter5}
+	\include{Chapter6}
+	\include{Chapter7}
+	\include{thanks}
+
+    \bibliographystyle{junsrt}
+	\bibliography{References}
+    
+    \include{publications.tex}
+\end{document}
+%--------------------------------------------------------------------
