@@ -83,6 +83,7 @@
 \usepackage{bm}
 \usepackage{cite}
 \usepackage{url}
+\usepackage{xcolor}
 
 %\bibliographystyle{jplain}
 % \usepackage{fancyhdr}
@@ -139,6 +140,22 @@
 \newcommand{\namegraspforcecapENG}{Holding force} % TODO: 重大问题，原文中有2种解释．．．6*1的合力 以及 3n*1指力列向量;
 
 \usepackage{xparse}
+% Revision marks for the changes made after the preliminary review.
+% Use \showthesisrevisionsfalse to produce the clean final manuscript.
+\newif\ifshowthesisrevisions
+\showthesisrevisionstrue
+\definecolor{thesisrevision}{RGB}{200,0,0}
+\NewDocumentCommand{\revise}{+m}{%
+  \ifshowthesisrevisions
+    {\color{thesisrevision}#1}%
+  \else
+    #1%
+  \fi
+}
+\newenvironment{revisionblock}
+  {\ifshowthesisrevisions\color{thesisrevision}\fi}
+  {}
+
 \NewDocumentCommand{\equfingerpoint}{ O{} O{} }{\bm{p}_{\mathrm{#1}#2}}
 \NewDocumentCommand{\equholdingpointset}{ O{} O{} }{{P}_{\mathrm{#1}#2}}  % 把持位置
 \newcommand{\equsearchspace}{\mathbb{P}}
@@ -149,7 +166,6 @@
 
 \NewDocumentCommand{\fix}{ O{} }{\textcolor{black}{#1}}
 \NewDocumentCommand{\todofix}{ O{} }{\textcolor{black}{#1}}
-
 
 
 

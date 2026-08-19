@@ -1,5 +1,5 @@
 \chapter{関連研究}
-本章では，3Dモデルを基盤として料理操作の動作と制御を設計する本研究の位置づけを明確にするため，先行研究を三つの分析観点と三つの検証タスクから整理する．まず，料理ロボット全体の研究動向を概観し，タスクレベルの計画と実行層の物理操作との関係を確認する．次に，幾何学的な分析，力学的な分析，および環境・道具の分析に関する研究を整理する．最後に，皮むき，定量注ぎ，および切断中の安定把持に関連する研究を比較し，本論文の位置づけを明らかにする．
+\revise{本章では，家庭用料理ロボットの操作実行層における本研究の位置づけを明確にするため，先行研究を形状，力学，環境・道具という三つの分析観点と，三つの検証タスクから整理する．まず，料理ロボット全体の研究動向を概観し，レシピ理解やタスク計画と，それらが決定された後の物理操作実行との境界を確認する．次に，各分析観点に関する研究を整理し，最後に皮むき，定量注ぎ，および切断中の安定把持に関連する研究と本論文のタスク固有手法を比較する．}
 
 \section{料理ロボットの研究}
 料理ロボットに求められる汎化能力と物理的相互作用の観点について，Sochackiら\cite{Sochacki2024PracticalChefReview}は料理ロボットに関する包括的なレビューを行い，家庭環境での調理では対象物の状態変動と複雑な接触相互作用が支配的であり，単純なピックアンドプレースだけではタスクが成立しないことを指摘している．
@@ -7,10 +7,10 @@
 調理タスクにおける道具媒介操作と計画の観点では，家庭環境の複雑さに対応するため，Bolliniら\cite{Bollini2013RecipesCookingRobot}やZhangら\cite{Zhang2024RealWorldCookingFromRecipes}は，自然言語のレシピ指示からロボットの行動計画を生成し，統合システム上で実行するアプローチを提案している．
 また，Kümpelら\cite{Kumpel2025CookingActions}は調理タスクを特定の操作カテゴリに写像するための知識表現を提案し，Beetzら\cite{Beetz2011CRAM}やPauliusら\cite{PauliusSun2019CookingSurvey}は認知ロボットアーキテクチャや知識表現に基づく計画の重要性を論じている．
 さらに，Beckerら\cite{Becker2011KitchenContainers}はキッチン環境でのモバイルマニピュレーションを実装した．
-しかし，これらの研究の多くはタスクレベルの計画や論理表現に主眼を置いており，実行層における物理的接触や幾何学的制約の詳細な設計は十分ではない．
+\revise{これらの研究はタスクレベルの計画や論理表現を主眼とするため，計画された個々の操作について，対象物の個体形状や接触条件から軌道，操作量，把持位置，力などを決定する実行層の問題は，別途解く必要がある．}
 また近年，Welteら\cite{Welte2025DexterousILSurvey}やWangら\cite{Wang2025EmbodiedVisualPerceptionSurvey}がレビューするように，模倣学習やエンボディドAIに基づく視覚と操作の統合も盛んである．
 しかし，料理における道具を介した操作には厳密な物理制約が存在する．
-本論文は，計画層が決定した後の「動作と制御パラメータの導出」に焦点を当て，3Dモデルを計算代理として用いることで，これらの物理的拘束を解析的に解決するアプローチをとる．
+\revise{本論文は，操作目的，使用する道具，および基本条件が決定された後の「動作と制御パラメータの導出」に焦点を当てる．3Dモデルはそのための入力表現であり，形状だけでなく，タスクごとに既知または計測可能な物理条件と組み合わせて用いる．}
 
 \section{幾何学的な分析に基づく操作設計}
 家庭環境の多様な形状に適応するための3Dモデル化と環境認識について，ロボットビジョンにおける3D再構成技術は，RGB-Dセンサの発展とともに成熟してきた．
@@ -61,7 +61,7 @@ Houら\cite{Hou2022PeelingPlanning}は自動皮むきのための幾何的な経
 剥皮を成立させる前提となる手内操作（In-hand manipulation）能力については，Rojasら\cite{Rojas2016GR2}の劣駆動機構による手内平面操作，Maら\cite{Ma2017WholeHandCaging}のCagingによるロバスト把持，McCannとDollar\cite{McCann2017StewartHand}のパラレルメカニズム型ハンド，Mnyusiwallaら\cite{Mnyusiwalla2016BioInspiredInsideHand}の生体模倣指などが提案されている．
 さらにLiarokapisとDollarは，手内操作のプリミティブ抽出\cite{Liarokapis2017Primitives}やタスク特化モデルの学習\cite{Liarokapis2016TaskSpecificModels}を論じている．
 微小力センシングの観点では，網膜手術などの医療分野における微小力フィードバック研究\cite{Balicki2010MicroForcePeeling}が，接触力管理の設計思想として参考になる．
-本論文の「皮むき」タスクは，幾何分析による軌道生成と力覚フィードバックを明示的に分離・統合し，個体差への高い適応力を実現する．
+\revise{本論文の皮むき操作は，食材ごとの形状から到達可能な軌道を生成し，表面法線に基づく領域分割と既処理境界に基づく食材回転を行い，さらに力覚フィードバックで点群誤差と表面凹凸を補償する点に特徴がある．}
 
 \subsection{注ぐに関する研究}
 ロボットによる注ぎ操作は，液体モデルの複雑さと容器の多様性から多くの研究がなされてきた．
@@ -72,7 +72,7 @@ Reyes-Montiel\cite{ReyesMontiel2026PouringReview}の最新のレビューやHuan
 一方，解析的なアプローチとして，DoとBurgard\cite{DoBurgard2018AccuratePouring}やSchenckとFox\cite{SchenckFox2017ClosedLoopPouring}，Kennedyら\cite{Kennedy2017Dispensing}は，RGB-Dカメラや視覚フィードバックを用いた高精度な閉ループ制御を報告している．
 容器の幾何形状に着目した研究としては，Brandlら\cite{Brandl2014WarpedPouring}のワーピングによる一般化や，Mottaghiら\cite{Mottaghi2017GlassHalfFull}の画像からの容積推定がある．
 液面知覚に関しては，ステレオ視による流動観測\cite{YamaguchiAtkeson2016StereoFlow}，深層学習による液体知覚\cite{SchenckFox2016LiquidsISER}，RGB-Dを用いた確率的液面推定\cite{Do2016ProbLiquidLevel}などが提案されており，失敗からの回復を学習に組み込む試み\cite{Langsfeld2014FailureToSuccessPouring}も存在する．
-本論文の注ぎ操作は，事前の流体学習に依存せず，未知の容器の3D点群モデルから直接容積と幾何制約を推論することで，解析的に注ぎパラメータを導出する点に新規性がある．
+\revise{本論文の注ぎ操作は，事前登録した容器形状や制御用の外部計量器具に依存せず，対象容器の3D点群から液面高さと体積の関係，または容器角度と流出量の関係を導出し，指定量に対応する制御目標へ変換する点に特徴がある．}
 
 \subsection{切断時の安定把持に関する研究}
 切断における把持安定化の研究は，切断自体の制御と把持計画の融合領域に位置する．
@@ -83,7 +83,7 @@ Reyes-Montiel\cite{ReyesMontiel2026PouringReview}の最新のレビューやHuan
 外力に対する安定把持計画の基礎としては，Millerら\cite{Miller2003ShapePrimitives}の形状プリミティブ近似，MirtichとCanny\cite{MirtichCanny1994OptGrasps}の実用的最適把持計算，Pelossofら\cite{Pelossof2004SVMGrasping}のSVMを用いた学習把持，Nguyen\cite{Nguyen1988ForceClosure}のForce-Closureの幾何的構成法が挙げられる．
 多指ハンドにおける力の分離については，YoshikawaとNagai\cite{YoshikawaNagai1987Forces}の操作力と把持力の概念や，Donnerら\cite{Donner2018WrenchDecomposition}の物理的に妥当なWrench分解手法が強力な理論的背景となる．
 さらに，拘束環境下での衝突を考慮した把持\cite{Lou2021CollisionAwareGrasping}や，重心と力覚に基づく姿勢適応\cite{Kanoulas2018CoMGraspAdapt}など，環境制約と外乱を同時に扱う技術が進展している．
-本論文では，切断によって生じるWrenchを解析的に推定し，これを外乱として把持の安定性評価に組み込むことで，探索に基づく最適な「安定把持」操作を実現する．
+\revise{本論文では，形状から衝突しない把持点を選ぶだけでなく，既知の包丁軌道に沿って時間変化する切断Wrenchを推定し，摩擦および力・モーメントの釣合いとともに把持安定性評価へ組み込む点に特徴がある．}
 
 \section{まとめ}
 以上の関連研究は，大きく次の三つのアプローチとして整理できる．
@@ -94,10 +94,12 @@ Reyes-Montiel\cite{ReyesMontiel2026PouringReview}の最新のレビューやHuan
 第三に，道具や作業台を含む環境との相互作用を前提とし，拘束条件の明示化，能動的な再計測，および相互作用可能性（アフォーダンス）の表現を通じて，ツール媒介操作を成立させる方向性である
 \cite{Bohg2016InteractivePerception,Ardon2021AffordanceReview,Stilman2011ConstrainedManipulation,Nakatsuru2023EnvironmentSupport,Mottaghi2017GlassHalfFull}．
 
+\begin{revisionblock}
 これらの研究により，形状認識，接触制御，環境利用に関する知見はそれぞれ蓄積されてきた．
-一方で，家庭環境における料理操作のように，形状の多様性，道具を介した相互作用，および接触状態の変動が同時に現れるタスクに対して，これらを3Dモデルに基づいて統合的に扱い，動作設計および制御設計へ接続する視点は，なお十分に整理されていない．
-本論文では，この点を踏まえ，3Dモデルを物理世界の計算代理として用い，タスクに応じて幾何，力，および環境の分析を組み合わせる．次章では，この分析を成立させる共通基盤として，二種類のロボットシステムと，RGB-D点群の取得・処理・評価方法を示す．
-
+一方，皮むき，注ぎ，切断中の把持では，3Dモデルから求める量も，最終的な動作・制御パラメータも異なるため，一般的な「計測，分析，動作生成」の流れだけでは各操作は成立しない．
+本論文の位置づけは，形状，力学，環境・道具という共通の観点で相補的な事例を選び，皮むきでは表面追従と力制御，注ぎでは容器幾何と操作量，安定把持では切断Wrenchと接触力という，タスク固有の対応関係を構成して実機で検証する点にある．
+次章では，これらに共通して必要となるロボットシステムとRGB-D点群の取得・処理・評価方法を示す．
+\end{revisionblock}
 
 
 
